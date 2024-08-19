@@ -4,7 +4,7 @@
  * @line: pointer to hold the input line
  * @len: variable to hold the buffer size.
  * @num_of_read: variable to store the number of characters read.
- * @args: an array to stroe the tokenized arguments
+ * @args: an array to store the tokenized arguments
  * Return: Always 0 on success
  */
 int main(void)
@@ -17,7 +17,7 @@ int main(void)
 	while (1)
 	{
 		printf("Please enter your command >");
-		num_of_read = getline(&line, &len, _stdin);
+		num_of_read = getline(&line, &len, stdin);
 
 		if (num_of_read == -1)
 		{
