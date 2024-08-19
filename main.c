@@ -3,7 +3,7 @@
  * main - Entry Point to Shell
  * @line: pointer to hold the input line
  * @len: variable to hold the buffer size.
- * @num_of_read:variable to store the number of characters read.
+ * @num_of_read: variable to store the number of characters read.
  * @args: an array to stroe the tokenized arguments
  * Return: Always 0 on success
  */
@@ -18,6 +18,7 @@ int main(void)
 	{
 		printf("Please enter your command >");
 		num_of_read = getline(&line, &len, _stdin);
+
 		if (num_of_read == -1)
 		{
 			perror("getline failed");
@@ -37,5 +38,12 @@ int main(void)
 
 		int num_args = tokenize_command(line, args);
 
-		return (0);
+		if (num_args <= 0)
+		{
+			continue;
+		}
+		execute_command(args);
 	}
+	free(line);
+	return (0);
+}
