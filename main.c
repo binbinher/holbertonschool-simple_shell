@@ -3,7 +3,7 @@
  * main - Entry Point to Shell
  * @line: pointer to hold the input line
  * @len: variable to hold the buffer size.
- * @numofread:variable to store the number of characters read.
+ * @num_of_read:variable to store the number of characters read.
  * @args: an array to stroe the tokenized arguments
  * Return: Always 0 on success
  */
@@ -11,23 +11,23 @@ int main(void)
 {
 	char *line = NULL;
 	size_t len = 0;
-	ssize_t numofread;
+	ssize_t num_of_read;
 	char *args[MAX_ARGS];
 
 	while (1)
 	{
 		printf("Please enter your command >");
-		numofread = getline(&line, &len, _stdin);
-		if (numofread == -1)
+		num_of_read = getline(&line, &len, _stdin);
+		if (num_of_read == -1)
 		{
-			perror("getline failed")
-					free(line);
+			perror("getline failed");
+			free(line);
 			exit(EXIT_FAILURE);
 		}
 
-		if (numofread > 0 && line[numofread - 1] == '\n')
+		if (num_of_read > 0 && line[num_of_read - 1] == '\n')
 		{
-			line[numofread - 1] = '\0';
+			line[num_of_read - 1] = '\0';
 		}
 
 		if (_strcmp(line, "exit") == 0)
