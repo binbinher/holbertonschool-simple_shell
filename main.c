@@ -40,10 +40,16 @@ int main(void)
 
 		if (num_args <= 0)
 		{
+			perror("No valid command entered");
 			continue;
 		}
-		execute_command(args);
+
+		if (execute_command(args) == -1)
+		{
+			perror("Command execution failed!");
+		}
 	}
+
 	free(line);
 	return (0);
 }
