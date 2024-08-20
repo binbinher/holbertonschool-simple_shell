@@ -33,10 +33,7 @@ int main(void)
 
 		if (num_args > 0)
 		{
-			if (execute_command(args) == -1)
-			{
-				perror("Command execution failed!");
-			}
+			execute_command(*line, *args);
 		}
 		else
 		{
