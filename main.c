@@ -13,6 +13,7 @@ int main(void)
 	size_t len = 0;
 	ssize_t num_of_read;
 	char *args[MAX_ARGS];
+	pid_t pid;
 
 	while (1)
 	{
@@ -44,12 +45,37 @@ int main(void)
 			continue;
 		}
 
-		if (execute_command(args) == -1)
+		pid = fork();
+		if (pid == -1)
 		{
-			perror("Command execution failed!");
+			perror("Fork creation failed");
+			free(line); /* should look if i didn't freed something */
+			free_array(args);
+			return (1);
+		}
+		if (pid == 0)
+		{
+			/* a path sould be defined here */
+			if (execve(NULL, args, NULL) == -1) /* NULL values should be replaced bu path and envp */
+			{
+				perror("Command execution failed!");
+				free(line);
+				free_array(args);
+				exit(0);
+			}
 		}
 	}
 
 	free(line);
 	return (0);
+}
+
+void free_array(char **array)
+{
+	int index;
+
+	for (index = 0; array[index]; index++)
+	{
+		free(array[index]);
+	}
 }
