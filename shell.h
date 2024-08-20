@@ -7,4 +7,6 @@
 #include <string.h>
 #include <stdint.h>
 
+int _strcmp(const char *str1, const char *str2);
+
 #endif
