@@ -1,0 +1,18 @@
+# Ignore all log files
+*.log
+
+# Ignore the build directory
+build/
+
+# Ignore temporary files
+*.tmp
+
+# Ignore specific file
+secret_config.yml
+
+# Ignore all files in the temp directory
+temp/
+
+# Ignore all files in logs directory but not error.log
+logs/*
+!logs/error.log
