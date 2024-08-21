@@ -1,0 +1,58 @@
+.TH SIMPLE_SHELL 1 "August 2024" "1.0" "Simple Shell Manual"
+.SH NAME
+simple_shell \- A basic UNIX command line interpreter as an end of term project for Holberton School
+.SH SYNOPSIS
+.B simple_shell
+.SH DESCRIPTION
+.B simple_shell
+is a basic UNIX shell that reads user input, tokenizes the input command, and executes it. This shell does not support advanced features like pipelines, redirections, or command arguments.
+
+The shell supports the following features:
+
+- Displays a prompt and waits for the user to type a command.
+- Executes commands that are available in the current directory.
+- Provides error handling for unrecognized commands and EOF (Ctrl+D).
+- Allows users to exit the shell using the "exit" command.
+
+.SH OPTIONS
+None.
+
+.SH RETURN VALUE
+The shell returns 0 on successful execution. If initialization fails, it returns 1.
+
+.SH FILES
+shell.h  
+Header file containing function prototypes and necessary includes.
+
+.SH USAGE
+Upon starting, the shell will display a prompt and wait for the user to type a command. The command is then tokenized and executed. If the command is not recognized, an error message will be displayed.
+
+.SH EXAMPLES
+Run the shell by typing:
+.PP
+.B ./simple_shell
+.PP
+After starting the shell, you will see a prompt:
+.PP
+.B simple_shell>
+.PP
+You can type a command like:
+.PP
+.B ls
+.PP
+to list files in the current directory. To exit the shell, type:
+.PP
+.B exit
+.PP
+
+.SH SEE ALSO
+[shell.h](3),[_strcmp.c](3)[handle_input.c](3)[initialize_shell.c](3)[print_prompt.c](3)[read_command.c](3)[free_array.c](3)[exec_cmd.c](3)
+
+.SH AUTHOR
+This program was written by [Benoît Marin] & [Binbin HE].
+
+.SH BUGS
+There are no known bugs. Please report any issues to [benoitmarin@holbertonstudents.com] or [binbin.he515@outlook.com].
+
+.SH COPYRIGHT
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
