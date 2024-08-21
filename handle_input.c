@@ -24,9 +24,13 @@ int handle_input(char **line, ssize_t num_of_read)
 		exit(EXIT_FAILURE);
 	}
 
-	if (_strcmp(*line, "exit") == 0)
+	if (_strcmp(*line, "exit\n") == 0)
 	{
 		return (1);
+	}
+	else if (_strcmp(*line, "env\n" == 0))
+	{
+		return (2);
 	}
 
 	return (0);

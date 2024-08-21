@@ -16,10 +16,18 @@ int main(void)
 		print_prompt();
 		num_of_read = read_command(&line, &len);
 
-		if (handle_input(&line, num_of_read))
+		int result = handle_input(&line, num_of_read);
+
+		if (result == 1)
 		{
 			break;
 		}
+		else if (result == 2)
+		{
+			print_env();
+			continue;
+		}
+
 		int num_args = tokenize_command(line, args);
 
 		if (num_args > 0)
@@ -37,7 +45,7 @@ int main(void)
 		}
 		else
 		{
-			perror("No valid command entered");
+			printf("No valid command entered");
 		}
 	}
 	free(line);
