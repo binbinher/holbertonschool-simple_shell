@@ -9,6 +9,7 @@
 int execute_command(char *line, char **args)
 {
 	pid_t pid;
+	int status = 0;
 
 	pid = fork();
 	if (pid == -1)
@@ -18,7 +19,7 @@ int execute_command(char *line, char **args)
 		free_array(args);
 		return (-1);
 	}
-	if (pid == 0)
+	else if (pid == 0)
 	{
 		/* a path sould be defined here */
 		if (execve(NULL, args, NULL) == -1)/* NULL as to be changed by path & envp */
@@ -28,6 +29,12 @@ int execute_command(char *line, char **args)
 			free_array(args);
 			exit(0);
 		}
+	}
+	else
+	{
+		free(line);
+		free_array(args);
+		wait(&status);
 	}
 	return (0);
 }
