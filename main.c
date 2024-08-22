@@ -1,10 +1,6 @@
 #include "shell.h"
 /**
  * main - Entry Point to Shell
- * @line: pointer to hold the input line
- * @len: variable to hold the buffer size.
- * @num_of_read: variable to store the number of characters read.
- * @args: an array to store the tokenized arguments
  * Return: Always 0 on success
  */
 int main(void)
@@ -13,34 +9,45 @@ int main(void)
 	size_t len = 0;
 	ssize_t num_of_read;
 	char *args[MAX_ARGS];
+	char *command_path;
 
 	while (1)
 	{
+		print_prompt();
 		num_of_read = read_command(&line, &len);
 
-		if (num_of_read == -1)
-		{
-			free(line);
-			exit(EXIT_FAILURE);
-		}
+		int result = handle_input(&line, num_of_read);
 
-		if (_strcmp(line, "exit") == 0)
+		if (result == 1)
 		{
 			break;
+		}
+		else if (result == 2)
+		{
+			print_env();
+			continue;
 		}
 
 		int num_args = tokenize_command(line, args);
 
 		if (num_args > 0)
 		{
-			execute_command(*line, *args);
+			command_path = find_command_in_path(args[0]);
+			if (command_path != NULL)
+			{
+				execute_command(line, args);
+				free(command_path);
+			}
+			else
+			{
+				printf("%s: command not found\n", args[0]);
+			}
 		}
 		else
 		{
-			perror("No valid command entered");
+			printf("No valid command entered");
 		}
 	}
-
 	free(line);
 	return (0);
 }
