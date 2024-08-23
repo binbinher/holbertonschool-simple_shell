@@ -10,7 +10,6 @@ ssize_t read_command(char **line, size_t *len)
 {
 	ssize_t num_of_read;
 
-	printf("Please enter your command >");
 	num_of_read = getline(line, len, stdin);
 
 	if (num_of_read == -1)

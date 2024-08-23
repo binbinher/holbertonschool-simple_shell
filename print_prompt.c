@@ -6,6 +6,6 @@
  */
 void print_prompt(void)
 {
-	printf("Please enter your command>");
+	printf("(HBTN shell)$ ");
 	fflush(stdout);
 }

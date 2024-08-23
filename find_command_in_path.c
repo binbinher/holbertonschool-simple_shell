@@ -12,6 +12,17 @@ char *find_command_in_path(const char *command)
 	char *dir = strtok(path_copy, ":");
 	char *full_path = NULL;
 
+	if (dir != NULL && strncmp("/bin/", command, 5) == 0)
+	{
+		full_path = malloc(strlen(command) + 6);
+		sprintf(full_path, "/usr%s", command);
+		if (access(full_path, X_OK) == 0)
+		{
+			return (full_path);
+		}
+		else
+			return (NULL);
+	}
 	while (dir != NULL)
 	{
 		full_path = malloc(strlen(dir) + strlen(command) + 2);
