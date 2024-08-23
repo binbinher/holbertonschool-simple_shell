@@ -6,6 +6,9 @@
  */
 void print_prompt(void)
 {
-	printf("(HBTN shell)$ ");
-	fflush(stdout);
+	if (isatty(0))
+	{
+		printf("(HBTN shell)$ ");
+		fflush(stdout);
+	}
 }
