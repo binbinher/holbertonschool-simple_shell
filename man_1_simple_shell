@@ -46,7 +46,7 @@ to list files in the current directory. To exit the shell, type:
 .PP
 
 .SH SEE ALSO
-[shell.h](3),[_strcmp.c](3)[handle_input.c](3)[initialize_shell.c](3)[print_prompt.c](3)[read_command.c](3)[free_array.c](3)[exec_cmd.c](3)
+[shell.h](3),[_strcmp.c](3)[handle_input.c](3)[initialize_shell.c](3)[print_prompt.c](3)[read_command.c](3)[exec_cmd.c](3)
 
 .SH AUTHOR
 This program was written by [Benoît Marin] & [Binbin HE].
