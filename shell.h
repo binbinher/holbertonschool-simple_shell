@@ -17,7 +17,7 @@ extern char **environ;
 
 /* helper functions: */
 
-int handle_input(char **line, ssize_t num_of_read);
+int handle_input(char **line, ssize_t num_of_read, char **args);
 void print_prompt(void);
 ssize_t read_command(char **line, size_t *len);
 int tokenize_command(char *command, char *args[], int maxargs);

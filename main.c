@@ -16,7 +16,7 @@ int main(void)
 	{
 		print_prompt();
 		num_of_read = read_command(&line, &len);
-		result = handle_input(&line, num_of_read);
+		result = handle_input(&line, num_of_read, args);
 		if (result == 1)
 			break;
 		else if (result == 2)

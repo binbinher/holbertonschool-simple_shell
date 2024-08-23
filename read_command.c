@@ -12,13 +12,7 @@ ssize_t read_command(char **line, size_t *len)
 
 	num_of_read = getline(line, len, stdin);
 
-	if (num_of_read == -1)
-	{
-		/* perror("getline failed"); */
-		exit(-1);
-	}
-
-	else if (num_of_read > 0 && (*line)[num_of_read - 1] == '\n')
+	if (num_of_read > 0 && (*line)[num_of_read - 1] == '\n')
 	{
 		(*line)[num_of_read - 1] = '\0';
 	}
