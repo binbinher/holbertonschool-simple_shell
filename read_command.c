@@ -14,7 +14,8 @@ ssize_t read_command(char **line, size_t *len)
 
 	if (num_of_read == -1)
 	{
-		perror("getline failed");
+		/* perror("getline failed"); */
+		exit(-1);
 	}
 
 	else if (num_of_read > 0 && (*line)[num_of_read - 1] == '\n')
