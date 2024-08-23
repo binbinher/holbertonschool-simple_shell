@@ -5,22 +5,22 @@
  * and processes end-of-file and errors.
  * @line: Pointer to hold the input line.
  * @num_of_read: Number of characters read.
- *
+ * @args: tokenized arguments
  * Return: 1 if 'exit' command is encountered, 0 otherwise.
  */
 
-int handle_input(char **line, ssize_t num_of_read)
+int handle_input(char **line, ssize_t num_of_read, char **args)
 {
 	if (num_of_read == -1)
 	{
+		free(*line);
+		free(args);
 		if (feof(stdin))
 		{
 			printf("\n");
-			free(*line);
 			exit(EXIT_SUCCESS);
 		}
 		perror("getline failed");
-		free(*line);
 		exit(EXIT_FAILURE);
 	}
 
