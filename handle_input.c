@@ -17,7 +17,6 @@ int handle_input(char **line, ssize_t num_of_read, char **args)
 		free(args);
 		if (feof(stdin))
 		{
-			printf("\n");
 			exit(EXIT_SUCCESS);
 		}
 		perror("getline failed");
